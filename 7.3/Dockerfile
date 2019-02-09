@@ -6,9 +6,9 @@ RUN apk add --no-cache --virtual .build-deps \
     curl-dev \
     imagemagick-dev \
     libtool \
-    libxml2-dev \
-    postgresql-dev \
-    sqlite-dev
+    libxml2-dev
+#    postgresql-dev \
+#    sqlite-dev
 
 # Install production dependencies
 RUN apk add --no-cache \
@@ -22,22 +22,24 @@ RUN apk add --no-cache \
     libpng-dev \
     make \
     mysql-client \
-    nodejs \
-    nodejs-npm \
-    yarn \
+#    nodejs \
+#    nodejs-npm \
+#    yarn \
     openssh-client \
-    postgresql-libs \
+#    postgresql-libs \
     rsync \
     zlib-dev \
     libzip-dev
 
 # Install PECL and PEAR extensions
 RUN pecl install \
-    imagick
+    imagick \
+    mcrypt-1.0.2
 
 # Install and enable php extensions
 RUN docker-php-ext-enable \
-    imagick
+    imagick \
+    mcrypt
 RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
     curl \
@@ -45,14 +47,17 @@ RUN docker-php-ext-install \
     mbstring \
     pdo \
     pdo_mysql \
-    pdo_pgsql \
-    pdo_sqlite \
+#    pdo_pgsql \
+#    pdo_sqlite \
     pcntl \
     tokenizer \
     xml \
     gd \
     zip \
-    bcmath
+    bcmath \
+    sockets \
+    opcache \
+    bz2
 
 # Install composer
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
