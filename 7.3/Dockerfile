@@ -29,7 +29,8 @@ RUN apk add --no-cache \
 #    postgresql-libs \
     rsync \
     zlib-dev \
-    libzip-dev
+    libzip-dev \
+    libmcrypt-dev
 
 # Install PECL and PEAR extensions
 RUN pecl install \
@@ -56,8 +57,7 @@ RUN docker-php-ext-install \
     zip \
     bcmath \
     sockets \
-    opcache \
-    bz2
+    opcache
 
 # Install composer
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
