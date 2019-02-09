@@ -62,6 +62,9 @@ ENV PATH="./vendor/bin:$PATH"
 # Install PHP_CodeSniffer
 RUN composer global require "squizlabs/php_codesniffer=*"
 
+# install hirak/prestissimo
+RUN composer global require hirak/prestissimo
+
 # Cleanup dev dependencies
 RUN apk del -f .build-deps
 
