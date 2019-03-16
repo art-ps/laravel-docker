@@ -22,11 +22,11 @@ RUN apk add --no-cache \
     libpng-dev \
     make \
     mysql-client \
-#    nodejs \
-#    nodejs-npm \
-#    yarn \
+    nodejs \
+    nodejs-npm \
+    #    yarn \
     openssh-client \
-#    postgresql-libs \
+    #    postgresql-libs \
     rsync \
     zlib-dev \
     libzip-dev \
@@ -48,8 +48,8 @@ RUN docker-php-ext-install \
     mbstring \
     pdo \
     pdo_mysql \
-#    pdo_pgsql \
-#    pdo_sqlite \
+    #    pdo_pgsql \
+    #    pdo_sqlite \
     pcntl \
     tokenizer \
     xml \
