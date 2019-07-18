@@ -35,12 +35,14 @@ RUN apk add --no-cache \
 # Install PECL and PEAR extensions
 RUN pecl install \
     imagick \
-    mcrypt-1.0.2
+    mcrypt-1.0.2 \
+    exif
 
 # Install and enable php extensions
 RUN docker-php-ext-enable \
     imagick \
     mcrypt
+
 RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
     curl \
@@ -57,7 +59,8 @@ RUN docker-php-ext-install \
     zip \
     bcmath \
     sockets \
-    opcache
+    opcache \
+    exif
 
 # Install composer
 RUN curl -s https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
